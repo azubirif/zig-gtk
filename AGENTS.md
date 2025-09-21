@@ -12,6 +12,7 @@ Use `zig fmt src tests examples` before committing to ensure consistent formatti
 
 ## Coding Style & Naming Conventions
 Follow Zig defaults: four-space indentation, no tabs, and rely on `zig fmt`. Functions and variables use `camelCase`; types, errors, and namespaces use `TitleCase`; constants use `SCREAMING_SNAKE`. Keep module files focused—split large widgets into separate files under `src/ui/`. Prefer explicit error unions and document unsafe GTK calls with a brief comment describing the lifetime expectations.
+Write related documentation every time code is written.
 
 ## Testing Guidelines
 Place unit tests alongside implementation files using Zig `test` blocks and name them after the behavior, e.g., `test "button click updates label"`. Integration tests targeting multiple modules belong in `tests/` using helper runners under `tests/runner.zig`. Aim to cover all public APIs and any GTK signal wiring. Run `zig build test` locally before opening a PR, and include reproduction cases for any GTK regression you fix.
