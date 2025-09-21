@@ -1,0 +1,4 @@
+# Zig artifacts
+.zig-cache/
+zig-out/
+
