@@ -34,4 +34,16 @@ pub fn build(b: *std.Build) void {
     const run_tests = b.addRunArtifact(tests);
     const test_step = b.step("test", "Run unit tests");
     test_step.dependOn(&run_tests.step);
+
+    const file_browser_module = b.createModule(.{
+        .root_source_file = b.path("src/core/file_browser.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    const file_browser_tests = b.addTest(.{
+        .name = "file-browser-tests",
+        .root_module = file_browser_module,
+    });
+    const run_file_browser_tests = b.addRunArtifact(file_browser_tests);
+    test_step.dependOn(&run_file_browser_tests.step);
 }
